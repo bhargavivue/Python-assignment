@@ -66,11 +66,29 @@ class Students:
             if student["age"] == age:
              students_list.append(student)
         return students_list if students_list else "age is not matching" 
-# Example usage
+    
+    def addstudent(self,firstname,lastname,fullname,dob,rollnumber,age,course,address,collegename,fee):
+       new_student = {
+            "firstname": firstname,
+            "lastname": lastname,
+            "fullname": fullname,
+            "dob": dob,
+            "address": address,
+            "course": course,
+            "collegename": collegename,
+            "fee": fee,
+            "age": age,
+            "rollnumber": rollnumber
+        }
+       self.students.append(new_student)
+       return "Student added successfully."
+    
+ # Example usage
 s1 = Students()
 #print(s1.getStudentByfee(10000))
 #print(s1.getStudentByCourse('eee'))
 #print(s1.getStudentByage(26))
 # print(s1.getStudentByfee(20000))
 #print(s1.getAllStudents())
-print(s1.getStudentByrollnum(1234))
+#print(s1.getStudentByrollnum((1234))
+print(s1.addstudent("paul","simmons","paul simmon","18/6/2003","1233445",23,"eee","banglore","ascet",20000))
