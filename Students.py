@@ -1,3 +1,4 @@
+import sys
 class Students:
     def __init__(self):
         self.students = [
@@ -6,11 +7,11 @@ class Students:
             {"firstname": "hema", "lastname": "m", "fullname": "mhema", "dob":"10/12/1985","address": "bangalore", "course": "eee", "collegename": "cng", "fee": 20000, "age": 26, "rollnumber": 6543},
             {"firstname": "phil", "lastname": "baker", "fullname": "philbaker", "dob":"15/11/1999","address": "bangalore", "course": "eee", "collegename": "cng", "fee": 10000, "age": 24, "rollnumber": 6543}
         ]
-
-    # Get all students method
+     
+     # Get all students method
     def getAllStudents(self):
         return self.students
-
+    
     # Method to get students by specific fee by using list 
     def getStudentByfee(self, fee):
         students_list=[]
@@ -20,17 +21,17 @@ class Students:
               students_list.append(student)  
         return students_list if students_list else "Fee is not matching"
 
-    # Method to get students with the lowest fee
+# Method to get students with the lowest fee
     def get_students_with_lowest_fee(self):
         if not self.students:
             return "No students available."
 
-    # Find the lowest fee among students
-        lowest_fee = min(student["fee"] for student in self.students)
-   # Return students with the lowest fee
+# Find the lowest fee among students
+        lowest_fee=min(student["fee"]  for student in self.students)
+# Return students with the lowest fee
         return self.getStudentByfee(lowest_fee)
     
-    # Method to get students with the highest fee
+# Method to get students with the highest fee
     def get_student_with_highest_fee(self):
         if not self.students:
            return "No students available."
@@ -68,27 +69,23 @@ class Students:
         return students_list if students_list else "age is not matching" 
     
     def addstudent(self,firstname,lastname,fullname,dob,rollnumber,age,course,address,collegename,fee):
-       new_student = {
-            "firstname": firstname,
-            "lastname": lastname,
-            "fullname": fullname,
-            "dob": dob,
-            "address": address,
-            "course": course,
-            "collegename": collegename,
-            "fee": fee,
-            "age": age,
-            "rollnumber": rollnumber
-        }
-       self.students.append(new_student)
-       return "Student added successfully."
-    
- # Example usage
+       dict={"firstname": firstname, "lastname": lastname, "fullname": fullname, "dob":dob,"address": address, "course": course, "collegename": collegename, "fee": fee, "age": age, "rollnumber": rollnumber}
+       self.students.append(dict)
+       return "Student:" +firstname+ " added successfully."
 s1 = Students()
-#print(s1.getStudentByfee(10000))
-#print(s1.getStudentByCourse('eee'))
-#print(s1.getStudentByage(26))
-# print(s1.getStudentByfee(20000))
-#print(s1.getAllStudents())
-#print(s1.getStudentByrollnum((1234))
-print(s1.addstudent("paul","simmons","paul simmon","18/6/2003","1233445",23,"eee","banglore","ascet",20000))
+
+if len(sys.argv) == 11:
+# Unpack command-line arguments
+ firstname =sys.argv[1]
+ lastname =sys.argv[2] 
+ fullname =sys.argv[3] 
+ dob=sys.argv[4]
+ rollnumber=sys.argv[5]
+ age=sys.argv[6]
+ course=sys.argv[7]
+ address=sys.argv[8]
+ collegename =sys.argv[9] 
+ fee = sys.argv[10]
+ print(s1.addstudent(firstname,lastname,fullname,dob,rollnumber,age,course,address,collegename,fee))
+
+    
